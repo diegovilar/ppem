@@ -1,8 +1,8 @@
 {
     "name": "ppem",
-    "version": "0.8.0",
+    "version": "0.8.1-alpha.1",
     "description": "A source-code pre-processor for 'em all",
-    "main": "build/ppem.js",
+    "main": "src/ppem.js",
     "bin": {
         "ppem": "./bin/ppem"
     },
