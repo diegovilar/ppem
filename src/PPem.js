@@ -108,6 +108,12 @@
 
         }
 
+        function isArray(value) {
+
+            return value && Array.isArray(value);
+
+        }
+
         function isFunction(value) {
 
             return typeof value == 'function';
@@ -182,8 +188,8 @@
          */
         var DEFAULT_OPTIONS = {
             baseDir : '.',
-            includes : {},
-            errorSourceAhead : 50,
+            includes : [],
+            errorSourceAhead : 100,
             verbose : false
         };
 
@@ -222,6 +228,7 @@
 
             this._parseOptions();
             // TODO seal recursively
+            this._options.includes.push(process.cwd());
 
             this._defines = clone(globalDefines);
             Object.defineProperty(this, '_defines', {
@@ -363,7 +370,7 @@
 
                 return descriptor;
             } else {
-                throw new Error('Could not resolve "' + filePath + '" to a valid file in the searched paths.');
+                throw new Error('Could not resolve "' + filePath + '" to a valid file in the searched paths: ' + searchPaths);
             }
         }
 
@@ -390,7 +397,7 @@
                 patterns = clone(patterns || CLIKE_PATTERNS);
 
                 includeSearchPaths = includeSearchPaths || [];
-                includeSearchPaths.push(process.cwd());
+                includeSearchPaths = includeSearchPaths.concat(this._options.includes);
 
                 var match, match2, include, p, stack = [];
                 var touched = false;
@@ -607,8 +614,8 @@
                 options.baseDir += '';
 
                 // We enforce type for includes
-                if (!isObject(options.includes)) {
-                    throwError('option "includes" must be an object', null, TypeError);
+                if (options.includes && !isArray(options.includes)) {
+                    throwError('option "includes" must be an array', null, TypeError);
                 }
 
                 // We tolerate errorSourceAhead type errors
