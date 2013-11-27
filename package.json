@@ -1,0 +1,43 @@
+{
+    "name": "ppem",
+    "version": "0.8.0",
+    "description": "A source-code pre-processor for 'em all",
+    "main": "build/ppem.js",
+    "bin": {
+        "ppem": "./bin/ppem"
+    },
+    "dependencies": {
+        "extend": "~1.2.1",
+        "clone": "~0.1.11",
+        "xtend": "~2.1.1",
+        "jasmine-node": "~1.11.0",
+        "lodash": "~2.3.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "prepublish": "npm test",
+        "test": "node_modules\\.bin\\jasmine-node spec",
+        "autotest": "node_modules\\.bin\\jasmine-node spec --autotest --watch src"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/diegovilar/ppem.git"
+    },
+    "keywords": [
+        "processor",
+        "preprocess",
+        "preprocessor",
+        "pre-process",
+        "pre-processor",
+        "pp"
+    ],
+    "author": {
+        "name": "Diego Vilar",
+        "email": "diegovilar@gmail.com",
+        "url": "http://github.com/diegovilar"
+    },
+    "license": "Apache License, Version 2.0",
+    "bugs": {
+        "url": "https://github.com/diegovilar/ppem/issues"
+    }
+}
