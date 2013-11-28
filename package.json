@@ -9,7 +9,6 @@
     "dependencies": {
         "extend": "~1.2.1",
         "clone": "~0.1.11",
-        "xtend": "~2.1.1",
         "jasmine-node": "~1.11.0",
         "lodash": "~2.3.0"
     },
